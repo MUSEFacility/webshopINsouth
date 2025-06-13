@@ -55,7 +55,7 @@ app.post('/checkout', async (req, res) => {
 
     // 1) Notify the shop owner (with CC)
     const infoOwner = await transporter.sendMail({
-      from: `"MUSE.holiday Biancheria Dolomites" <${process.env.SMTP_USER}>`,
+      from: `"MUSE.holiday Biancheria South Tyrol" <${process.env.SMTP_USER}>`,
       to:   process.env.SHOP_EMAIL,
       cc:   'info@muse.holiday',
       subject: `Ordine ricevuto: ${name}`,
@@ -66,7 +66,7 @@ app.post('/checkout', async (req, res) => {
     // 2) Confirmation to buyer
     const buyerSubject = `Conferma ordine €${total.toFixed(2)}`;
     const infoBuyer = await transporter.sendMail({
-      from:    `"MUSE.holiday Biancheria Dolomites" <${process.env.SMTP_USER}>`,
+      from:    `"MUSE.holiday Biancheria South Tyrol" <${process.env.SMTP_USER}>`,
       to:      email,
       subject: buyerSubject,
       html:    summaryHtml
